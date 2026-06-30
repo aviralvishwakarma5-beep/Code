@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinyl Archive — Music Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Music Style.css">
+</head>
+<body>
+
+<div class="app">
+  <div class="app-header">
+    <span class="mark"></span>
+    <h1>VINYL ARCHIVE</h1>
+    <span>— late shift mix</span>
+  </div>
+
+  <div class="deck">
+    <!-- Player console -->
+    <section class="panel console" id="console">
+      <div class="console-top">
+        <div class="rec-indicator"><span class="rec-dot"></span>NOW SPINNING</div>
+        <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+
+      <div class="record-row">
+        <div class="turntable">
+          <div class="record">
+            <div class="label" id="recordLabel"></div>
+          </div>
+          <div class="tonearm">
+            <svg viewBox="0 0 58 58" fill="none">
+              <circle cx="48" cy="10" r="6" fill="#3a372f" stroke="#544f42" stroke-width="2"/>
+              <line x1="48" y1="10" x2="10" y2="48" stroke="#544f42" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="10" cy="48" r="3" fill="#ffa94d"/>
+            </svg>
+          </div>
+        </div>
+        <div class="now-info">
+          <p class="eyebrow">TRACK <span id="trackIndex">01</span> / <span id="trackTotal">05</span></p>
+          <p class="song-title" id="songTitle">—</p>
+          <p class="song-artist" id="songArtist">—</p>
+        </div>
+      </div>
+
+      <div class="progress-row">
+        <span class="time" id="curTime">0:00</span>
+        <input type="range" id="seek" min="0" max="100" value="0" step="0.1" aria-label="Seek">
+        <span class="time end" id="durTime">--:--</span>
+      </div>
+
+      <div class="transport">
+        <button class="tbtn toggle" id="shuffleBtn" title="Shuffle" aria-label="Toggle shuffle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+        </button>
+        <button class="tbtn" id="prevBtn" title="Previous" aria-label="Previous track">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        </button>
+        <button class="tbtn play-btn" id="playBtn" title="Play" aria-label="Play or pause">
+          <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="tbtn" id="nextBtn" title="Next" aria-label="Next track">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 6h2v12h-2zM6 6v12l8.5-6z"/></svg>
+        </button>
+        <button class="tbtn toggle" id="repeatBtn" title="Repeat" aria-label="Toggle repeat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+        </button>
+      </div>
+
+      <div class="volume-row">
+        <button class="mute-btn" id="muteBtn" aria-label="Mute or unmute">
+          <svg id="volIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 10v4h4l5 5V5L7 10H3z"/><path d="M16.5 12a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+        </button>
+        <input type="range" id="volume" min="0" max="100" value="70" aria-label="Volume">
+        <span class="vol-pct" id="volPct">70%</span>
+      </div>
+    </section>
+
+    <!-- Playlist -->
+    <section class="panel playlist-panel">
+      <div class="pl-header">
+        <h2>TRACKLIST</h2>
+        <span id="plCount">5 tracks</span>
+      </div>
+      <div class="tracklist" id="tracklist"></div>
+    </section>
+  </div>
+</div>
+
+<audio id="audio" preload="metadata"></audio>
+
+<script src="Music.js"></script>
+
+</body>
+</html>
