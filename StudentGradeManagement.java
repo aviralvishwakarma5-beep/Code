@@ -23,7 +23,7 @@ class Student {
     }
 }
 
-public class StudentGradeManagement {
+public class CodeAlpha_StudentGradeManagement {
 
     public static void main(String[] args) {
 
