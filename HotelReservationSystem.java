@@ -33,7 +33,7 @@ class Booking {
     }
 }
 
-public class HotelReservationSystem {
+public class CodeAlpha_HotelReservationSystem {
 
     static Scanner sc = new Scanner(System.in);
 
